@@ -1,7 +1,7 @@
 # source : https://github.com/kursion/security-proxy-crawler/blob/master/crawler.py
 # author : Yves Lange
 
-import urllib2
+from urllib.request import urlopen, Request
 import re
 
 
@@ -11,8 +11,8 @@ def getHTML(page):
     url = "http://nntime.com/proxy-updated-{:}.htm".format(page)
 
     print('Crawling url : '+url)
-    req = urllib2.Request(url)
-    return urllib2.urlopen(req).read()
+    req = Request(url)
+    return urlopen(req).read()
 
 
 # Hack JavaScript codes of nntime.com to parse the port number.
@@ -23,7 +23,7 @@ def getHTML(page):
 def getHackCodes(htmlPage):
     codes = {}
     parseCode = r"((?:[a-z]=[0-9];)+)"
-    matchesCode = re.findall(parseCode, htmlPage)
+    matchesCode = re.findall(parseCode, str(htmlPage))
     for code in matchesCode[0].split(";")[:-1]:
         v = code.split("=")
         codes[v[0]] = v[1]
@@ -60,7 +60,7 @@ def getProxies(startPage=1, endPage=13):
         htmlPage = getHTML(page)
 
         parseTable = r"<td>(.*?)</td>"
-        matchesRow = re.findall(parseTable, htmlPage)
+        matchesRow = re.findall(parseTable, str(htmlPage))
 
         codes = getHackCodes(htmlPage)
 

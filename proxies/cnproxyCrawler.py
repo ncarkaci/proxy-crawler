@@ -31,8 +31,8 @@ def handle(url):
 
 # Get proxies from premproxy.com
 def getProxies(startPage=1, endPage=11):
-    urls = ['http://www.cnproxy.com/proxy%d.html' % x for x in xrange(startPage, endPage)] + \
-           ['http://www.cnproxy.com/proxyedu%d.html' % x for x in xrange(1, 3)]
+    urls = ['http://www.cnproxy.com/proxy%d.html' % x for x in range(startPage, endPage)] + \
+           ['http://www.cnproxy.com/proxyedu%d.html' % x for x in range(1, 3)]
 
     proxies = []
     for url in urls:

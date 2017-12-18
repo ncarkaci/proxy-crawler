@@ -11,6 +11,7 @@ import itertools
 import time
 from colorama import Fore, Back, Style
 
+print(threading.active_count())
 # Global variables
 in_filename  = 'proxy_list.txt'
 #in_directory = './data/proxy_list.txt'
@@ -200,4 +201,3 @@ print("Bye-bye!")
 # Launch N (10) threads
 # When writing to the file, use lock
 # When Queue is empty flash results and shutdown
-
