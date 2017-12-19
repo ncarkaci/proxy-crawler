@@ -1,3 +1,4 @@
 # proxy-crawler
 
-Used different proxy web site and crawle proxy site from them. And check which proxy address valid your url. Create proxy_ip.txt file and valid_proxy file.
+Used different proxy web site and crawle proxy ip adress. And check which proxy ip valid given url. 
+After process code create proxy_ip.txt file which inludes crawled ip and port and valid_proxy file which includes valid ip and port tuples for given url.
